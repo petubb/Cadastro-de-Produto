@@ -1,4 +1,4 @@
-package produtoBean;
+package bean;
 
 public class ProdutoBean {
 	private String nome;
@@ -23,5 +23,4 @@ public class ProdutoBean {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-
 }

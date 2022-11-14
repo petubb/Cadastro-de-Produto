@@ -1,9 +1,9 @@
-package produtoView;
+package view;
 
 import java.util.HashMap;
 import java.util.Scanner;
 
-import produtoBean.ProdutoBean;
+import bean.ProdutoBean;
 
 
 public class ProdutoView{
@@ -17,7 +17,7 @@ public class ProdutoView{
 	Integer opcPrincipal;
 
 
-	//eu sou falcao na pista tambem sou falcao no morro
+	//eu sou falcao na pista, tambem sou falcao no morro
 	//Boy, 2022
 	public void menu() {
 		System.out.println("O QUE DESEJA FAZER");
@@ -29,27 +29,23 @@ public class ProdutoView{
 		System.out.println("6 - encerrar");
 	}
 
-	public void menuInserirProdOpcao1() {
-		prodBean = new ProdutoBean();
-		System.out.println("digite o nome produto que deseja adicionar:");
-		prodBean.setNome(sc.next());
-
+	public void InserirNomeProduto() {
+		System.out.println("digite o nome do produto:");
+	}
+	public void InserirCategoriaProduto() {
 		System.out.println("digite a categoria desse produto:");
-		prodBean.setCategoria(sc.next());
-
+	}
+	public void InserirValorProduto() { 
 		System.out.println("digite o valor produto que deseja adicionar:");
-		prodBean.setValor(sc.nextDouble());
-
+	}
+	public void ProdutoInseridoMensagem(ProdutoBean prodBean) {
 		System.out.println("produto '"+ prodBean.getNome() +"' adicionado");
-		map.put(id, prodBean);
-		id = id + 1;
 	}
 
-	public void menuListarProdOpcao2() {
+	public void menuListarProdOpcao2(HashMap<Integer, ProdutoBean> map) {
 		System.out.println("==============");
 		for (Integer key : map.keySet()) {
 			prodBean = map.get(key);
-			System.out.println("");	
 			System.out.println(key + " = " + prodBean.getNome());	
 			System.out.println("categoria: "+  prodBean.getCategoria());	
 			System.out.println("valor: " + prodBean.getValor());	
@@ -58,7 +54,7 @@ public class ProdutoView{
 		System.out.println("==============");
 	}
 
-	public void menuProcurarProdOpcao3() {
+	public void menuProcurarProdOpcao3(ProdutoBean prodBean) {
 		System.out.println("Digite o numero do produto que vc quer ver");
 		keyGet = sc.nextInt();
 		if(map.containsKey(keyGet) == false) {

@@ -1,7 +1,9 @@
-package produtoController;
+package controller;
 
+import java.util.HashMap;
 import java.util.Scanner;
-import produtoView.ProdutoView;
+import view.ProdutoView;
+import bean.ProdutoBean;
 
 public class ProdutoController {
 
@@ -9,22 +11,38 @@ public class ProdutoController {
 
 		try (Scanner sc = new Scanner(System.in)) {
 			ProdutoView prodView = new ProdutoView();
+			ProdutoBean prodBean = new ProdutoBean();
+			HashMap<Integer, ProdutoBean> map = new HashMap<>();
 			Integer opcPrincipal; 
+			Integer id = 1;
 
 			do {
 				prodView.menu();
 				opcPrincipal = sc.nextInt();
 
 				if(opcPrincipal == 1) {
-					prodView.menuInserirProdOpcao1();
+					prodBean = new ProdutoBean();
+					prodView.InserirNomeProduto();
+					prodBean.setNome(sc.nextLine());
+					prodBean.setNome(sc.nextLine());
+
+					prodView.InserirCategoriaProduto();
+					prodBean.setCategoria(sc.nextLine());
+
+					prodView.InserirValorProduto();
+					prodBean.setValor(sc.nextDouble());
+
+					prodView.ProdutoInseridoMensagem(prodBean);
+					map.put(id, prodBean);
+					++id;
 				}
 
 				else if(opcPrincipal == 2) {
-					prodView.menuListarProdOpcao2();
+					prodView.menuListarProdOpcao2(map);
 				}
 
 				else if(opcPrincipal == 3) {
-					prodView.menuProcurarProdOpcao3();
+					prodView.menuProcurarProdOpcao3(prodBean);
 				}
 
 				else if(opcPrincipal == 4) {
