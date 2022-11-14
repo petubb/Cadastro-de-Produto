@@ -54,7 +54,7 @@ public class ProdutoView{
 		System.out.println("==============");
 	}
 
-	public void menuProcurarProdOpcao3(ProdutoBean prodBean) {
+	public void menuProcurarProdOpcao3(HashMap<Integer, ProdutoBean> map) {
 		System.out.println("Digite o numero do produto que vc quer ver");
 		keyGet = sc.nextInt();
 		if(map.containsKey(keyGet) == false) {
@@ -69,12 +69,18 @@ public class ProdutoView{
 		}
 	}
 
-	public void menuAlterarProdOpcao4() {
+	public void menuAlterarProdOpcao4(HashMap<Integer, ProdutoBean> map) {
+		System.out.println("==============");
+		for (Integer key : map.keySet()) {
+			prodBean = map.get(key);
+			System.out.println(key + " = " + prodBean.getNome());
+		}
+		System.out.println("==============");
 		System.out.println("Digite o Id do produto que vc quer alterar");
 		keyGet = sc.nextInt();
 		System.out.println(keyGet + " é o produto: " + map.get(keyGet).getNome());
 
-		System.out.println("certeza que deseja alterar essa produto?");
+		System.out.println("certeza que deseja alterar o produto "+ map.get(keyGet).getNome()+"?");
 		System.out.println("1 - sim");
 		System.out.println("2 - não");
 		Integer alterar = sc.nextInt();
@@ -113,7 +119,7 @@ public class ProdutoView{
 		keyGet = sc.nextInt();
 		System.out.println(keyGet + " é o produto: " + map.get(keyGet).getNome());
 
-		System.out.println("certeza que deseja remover essa produto?");
+		System.out.println("certeza que deseja remover esse produto?");
 		System.out.println("1 - sim");
 		System.out.println("2 - não");
 		Integer remover = sc.nextInt();
