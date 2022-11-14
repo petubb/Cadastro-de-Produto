@@ -42,11 +42,11 @@ public class ProdutoController {
 				}
 
 				else if(opcPrincipal == 3) {
-					prodView.menuProcurarProdOpcao3(prodBean);
+					prodView.menuProcurarProdOpcao3(map);
 				}
 
 				else if(opcPrincipal == 4) {
-					prodView.menuAlterarProdOpcao4();
+					prodView.menuAlterarProdOpcao4(map);
 				}
 
 				else if(opcPrincipal == 5) {
